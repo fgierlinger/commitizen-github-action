@@ -45,8 +45,6 @@ Go to your repository **Settings > Secrets and variables > Actions** and add the
 * `RELEASE_APP_ID`: Paste the App ID from Step 2.1.
 * `RELEASE_APP_PRIVATE_KEY`: Open the downloaded `.pem` file in a text editor and paste the **entire content** (including the `-----BEGIN RSA PRIVATE KEY-----` lines).
 
----
-
 ## 🔄 Final `release.yml` with App Logic
 
 This is the production-ready workflow that uses the secrets above to bypass your Ruleset protections.
@@ -103,13 +101,14 @@ jobs:
 
 Go to **Settings > Rules > Rulesets** and create/edit a "Branch Ruleset" for `main`:
 
-* **Bypass List:** * Add your GitHub App (e.g., `Gierlinger-Infra-Bot`).
-* Set **Bypass Mode** to **Always**. This allows the bot to skip PR requirements and push directly.
+* **Bypass List:**
+    * Add your GitHub App (e.g., `Gierlinger-Infra-Bot`).
+        * Set **Bypass Mode** to **Always**. This allows the bot to skip PR requirements and push directly.
+    * Add repository admin.
 
 * **Rules:**
-* **Restrict updates:** **Enabled**. (This is the Ruleset version of "Restrict Pushes"). Only actors in the Bypass List can push directly.
-* **Restrict deletions:** **Enabled**.
-* **Require a pull request before merging:** **Enabled**. This ensures humans must use PRs.
+    * **Restrict deletions:** **Enabled**.
+    * **Require a pull request before merging:** **Enabled**. This ensures humans must use PRs.
 * **Block force pushes:** **Enabled**.
 
 ### 2. Workflow Logic (`release.yml`)
