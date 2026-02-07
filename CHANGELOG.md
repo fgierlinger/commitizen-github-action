@@ -1,3 +1,10 @@
+## v0.2.1 (2026-02-07)
+
+### Fix
+
+- something in the code
+- something else in the docs
+
 ## v0.2.0 (2026-02-07)
 
 ### Feat
